@@ -66,6 +66,37 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\AdminLTE.css" />
+    <Content Include="css\estilo.css" />
+    <Content Include="css\skins\_all-skins.css" />
+    <Content Include="css\skins\_all-skins.min.css" />
+    <Content Include="GenerarOrdenCompra.aspx" />
+    <Content Include="GenerarVenta.aspx" />
+    <Content Include="img\medico.png" />
+    <Content Include="img\mundo.jpg" />
+    <Content Include="img\mundo2.jpg" />
+    <Content Include="img\mundo3.jpg" />
+    <Content Include="img\mundo4.jpg" />
+    <Content Include="img\mundofarma.jpg" />
+    <Content Include="img\yachi.jpg" />
+    <Content Include="Index.aspx" />
+    <Content Include="js\GenerarOrdenCompra.js" />
+    <Content Include="js\GenerarVenta.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="plugins\AdminLTE\app.js" />
+    <Content Include="plugins\AdminLTE\app.min.js" />
+    <Content Include="plugins\AdminLTE\demo.js" />
+    <Content Include="plugins\AdminLTE\pages\dashboard.js" />
+    <Content Include="plugins\AdminLTE\pages\dashboard2.js" />
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="plugins\bootstrap\css\bootstrap.css.map" />
+    <Content Include="plugins\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Home.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,10 +106,76 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="plugins\bootstrap\js\npm.js" />
+    <Content Include="plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="plugins\datatables\jquery.dataTables.js" />
+    <Content Include="plugins\jquery\jquery-3.2.1.js" />
+    <Content Include="plugins\jquery\jquery-3.2.1.min.js" />
+    <Content Include="RegistrarIncidente.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenerarOrdenCompra.aspx.cs">
+      <DependentUpon>GenerarOrdenCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarOrdenCompra.aspx.designer.cs">
+      <DependentUpon>GenerarOrdenCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarVenta.aspx.cs">
+      <DependentUpon>GenerarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarVenta.aspx.designer.cs">
+      <DependentUpon>GenerarVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.Master.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.Master.designer.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarIncidente.aspx.cs">
+      <DependentUpon>RegistrarIncidente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarIncidente.aspx.designer.cs">
+      <DependentUpon>RegistrarIncidente.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Capa Entidades\Capa Entidades.csproj">
+      <Project>{5b5f2ae7-2e5e-4f3e-8131-42b7d24a34f9}</Project>
+      <Name>Capa Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa Negocio\Capa Negocio.csproj">
+      <Project>{1a3a1441-0ef4-4cc7-932f-17ca21be74c5}</Project>
+      <Name>Capa Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

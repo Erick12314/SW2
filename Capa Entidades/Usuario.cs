@@ -10,7 +10,12 @@ namespace Capa_Entidades
     {
         public int IdUsuario { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public int IdRol { get; set; }
+        public string Pass { get; set; }
+		public string Nombre { get; set; }
+		public string Paterno { get; set; }
+		public string Materno { get; set; }
+		public long Dni { get; set; }
+		public bool Estado { get; set; }
+		public int IdRol { get; set; }
     }
 }

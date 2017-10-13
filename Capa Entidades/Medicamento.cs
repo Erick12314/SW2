@@ -9,13 +9,14 @@ namespace Capa_Entidades
     public class Medicamento
     {
         public int IdMedicamento { get; set; }
-        public string Descripcion { get; set; }
-        public Decimal PrecioCompra { get; set; }
-        public Decimal PrecioVenta { get; set; }
+		public string CodMedicamento { get; set; }
+		public string Descripcion { get; set; }
+        public decimal PrecioCompra { get; set; }
+        public decimal PrecioVenta { get; set; }
         public int Stock { get; set; }
         public int StockMinimo { get; set; }
-        public DateTime FechaVencimiento { get; set; }
+        public string FechaVencimiento { get; set; }
         public int IdTipoMedicamento { get; set; }
-        public int IdProveedor { get; set; }
+        public long RucProveedor { get; set; }
     }
 }

@@ -8,5 +8,11 @@ namespace Capa_Entidades
 {
     public class Venta
     {
-    }
+		public int IdVenta { get; set; }
+		public string CodVenta { get; set; }
+		public string FecVenta { get; set; }
+		public decimal Igv { get; set; }
+		public decimal Total { get; set; }
+		public int IdUsuario { get; set; }
+	}
 }

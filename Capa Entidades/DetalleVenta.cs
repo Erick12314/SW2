@@ -9,10 +9,10 @@ namespace Capa_Entidades
     public class DetalleVenta
     {
         public int IdDetalle { get; set; }
-        public int IdMedicamento { get; set; }
-        public int IdVenta { get; set; }
-        public Decimal precio { get; set; }
+        public string CodMedicamento { get; set; }
+        public string CodVenta { get; set; }
+        public decimal Precio { get; set; }
         public int Cantidad { get; set; }
-        public Decimal Subtotal { get; set; }
+        public decimal Subtotal { get; set; }
     }
 }

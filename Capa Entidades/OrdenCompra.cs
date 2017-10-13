@@ -8,11 +8,11 @@ namespace Capa_Entidades
 {
     public class OrdenCompra
     {
-        public int IdOrdenCompra { get; set; }
-        public int IdProveedor { get; set; }
-        public DateTime Fecha { get; set; }
-        public bool Estado { get; set; }
-        public Decimal Igv { get; set; }
-        public Decimal Total { get; set; }
-    }
+        public int IdOrdCompra { get; set; }
+		public string CodOrdCompra { get; set; }
+        public string FecOrdCompra { get; set; }
+        public decimal Igv { get; set; }
+        public decimal Total { get; set; }
+		public long RucPro { get; set; }
+	}
 }
