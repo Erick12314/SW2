@@ -89,5 +89,38 @@ namespace Capa_Datos
 
 			return resultado;
 		}
+		public string GenerarNroVenta()
+		{
+			string resultado = "V";
+			int valor = 0;
+			SqlConnection cn = null;
+			SqlCommand cmd = null;
+			SqlDataReader dr = null;
+			try
+			{
+				cmd = new SqlCommand("SELECT CODVENTA FROM VENTA", cn);
+				cn.Open();
+				dr = cmd.ExecuteReader();
+				if (dr.Read())
+				{
+					valor = Convert.ToInt32(Convert.ToString(dr[0]).Replace("V", "")) + 1;
+					resultado += valor;
+				}
+				else
+				{
+					resultado = "V1";
+				}
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+			finally
+			{
+				cn.Close();
+			}
+			return resultado;
+
+		}
 	}
 }

@@ -29,7 +29,7 @@
 						Código:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtcodmedicamento">
+							<input type="text" class="form-control" id="txtcodmedicamento" disabled value="ccccc">
 							</div>
 							<div class="col-md-6">
 								<input type="button" class="btn btn-primary" value="Buscar Medicamento">
@@ -43,7 +43,7 @@
 						</div>
 						Precio Unit.:
 						<div style="width:100px">
-						<input type="text" class="form-control" id="txtprecio">
+						<input type="number" class="form-control" id="txtprecio">
 						</div>
 						Cantidad:
 						<div class="row">
@@ -63,18 +63,19 @@
 				<div class="row">
 					<div class="col-md-8 form-inline">
 						<label>N° de la Venta:</label>&nbsp;&nbsp;&nbsp;
-						<input type="text" class="form-control" style="width: 100px" id="txtnumventa">
+						<input type="text" class="form-control" style="width: 100px" id="txtnumventa" disabled>
 					</div>
 						
 					<div  class="form-inline col-md-4">
 						<label for="">Fecha:</label>&nbsp;&nbsp;&nbsp;
-						<input type="text" class="form-control" id="txtfecha">
+						<input type="text" class="form-control" id="txtfecha" disabled>
 					</div>
 				</div><br>
 	
 				<table class="table">
 					<thead>
 						<tr>
+							<td>Cod. Med</td>
 							<td>Medicamento</td>
 							<td>PUnitario</td>
 							<td>Cantidad</td>
@@ -89,11 +90,11 @@
 				<br><br><br><br>
 				<div class="col-md-offset-9 col-md-2">
 						Monto:
-						<input type="text" class="form-control" id="txtmonto">
+						<input type="text" class="form-control" id="txtmonto" disabled>
 						I.G.V(18%):
-						<input type="text" class="form-control" id="txtigv">
+						<input type="text" class="form-control" id="txtigv" disabled>
 						Monto Total:
-						<input type="text" class="form-control" id="txtmontototal"><br>
+						<input type="text" class="form-control" id="txtmontototal" disabled><br>
 				</div>
 			</fieldset>
 			</div><br>

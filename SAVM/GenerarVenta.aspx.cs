@@ -18,7 +18,7 @@ namespace SAVM
 		}
 
 		[WebMethod]
-		public static String RegistrarVenta(string _Codventa, string _FecVenta, decimal _Igv, decimal _Total)
+		public static string RegistrarVenta(string _Codventa, string _FecVenta, decimal _Igv, decimal _Total)
 		{
 			bool resultado = false;
 			Venta venta = new Venta()
@@ -32,6 +32,33 @@ namespace SAVM
 			resultado = VentaLN.GetInstance().RegistrarVenta(venta);
 
 			return resultado == true ? "Correcto" : "Incorrecto";
+		}
+		[WebMethod]
+		public static string RegistrarDetalleVenta(decimal _precio, int _cantidad, decimal _subtotal, string _codmedicamento, string _codventa)
+		{
+			bool resultado = false;
+			DetalleVenta detalle = new DetalleVenta()
+			{
+				Precio = _precio,
+				Cantidad = _cantidad,
+				Subtotal = _subtotal,
+				CodMedicamento = _codmedicamento,
+				CodVenta = _codventa
+			};
+
+			resultado = VentaLN.GetInstance().RegistrarDetalleVenta(detalle);
+
+			return resultado == true ? "Correcto" : "Incorrecto";
+		}
+
+		[WebMethod]
+		public static string GenerarNroVenta()
+		{
+			string resultado = "";
+
+			resultado = VentaLN.GetInstance().GenerarNroVenta();
+
+			return resultado;
 		}
 
 	}

@@ -45,5 +45,16 @@ namespace Capa_Negocio
 				throw ex;
 			}
 		}
+		public string GenerarNroVenta()
+		{
+			try
+			{
+				return VentaDAO.GetInstance().GenerarNroVenta();
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
 	}
 }
