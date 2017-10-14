@@ -200,3 +200,46 @@ function Limpiar() {
 	$("#txtmontototal").val("");
 	$("#tabladetalleventa").empty();
 }
+
+$("#btnBuscarMedicamento").click(function (e) {
+	e.preventDefault();
+	ListarMedicamentosVenta();
+});
+
+function ListarMedicamentosVenta() {
+	$.ajax({
+		type: "POST",
+		url: "Medicamentos.aspx/ListarMedicamento",
+		data: {},
+		contentType: "application/json",
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+		},
+		success: function (respuesta) {
+			var data = respuesta.d;
+			$("#tablaMedicamentosVenta").empty();
+			var btnAgregar = "<button id='btnAgregarMedicamento' type='button' class='btn btn-success btn-md' style='color:white;'>Agregar</button>";
+			for (var i = 0; i < data.length; i++) {
+				$("#tablaMedicamentosVenta").append("<tr>" +
+					"<td>" + data[i].CodMedicamento + "</td>" +
+					"<td>" + data[i].Descripcion + "</td>" +
+					"<td>" + data[i].PrecioVenta + "</td>" +
+					"<td>" + data[i].Stock + "</td>" +
+					"<td>" + data[i].FechaVencimiento + "</td>" +
+					"<td>" + data[i].TipoMedicamento.Descripcion + "</td>" +
+					"<td>" + data[i].Proveedor.RazonSocial + "</td>" +
+					"<td>" + btnAgregar + "</td>" +
+					"</tr > ");
+			}
+		}
+	});
+}
+
+$("#tablaMedicamentosVenta").on('click', '#btnAgregarMedicamento', function (e) {
+	e.preventDefault();
+	var fila = $(this).closest('tr');
+	$("#txtcodmedicamento").val(fila.find('td:eq(0)').text());
+	$("#txtnombre").val(fila.find('td:eq(1)').text());
+	$("#txtprecio").val(fila.find('td:eq(2)').text());
+	$('#modalMedicamentos').modal('toggle');
+});

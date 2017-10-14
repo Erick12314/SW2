@@ -16,7 +16,7 @@ namespace Capa_Entidades
         public int Stock { get; set; }
         public int StockMinimo { get; set; }
         public string FechaVencimiento { get; set; }
-        public int IdTipoMedicamento { get; set; }
-        public long RucProveedor { get; set; }
+        public TipoMedicamento TipoMedicamento { get; set; }
+        public Proveedor Proveedor { get; set; }
     }
 }

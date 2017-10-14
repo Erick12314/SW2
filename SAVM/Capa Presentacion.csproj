@@ -83,6 +83,7 @@
     <Content Include="js\GenerarOrdenCompra.js" />
     <Content Include="js\GenerarVenta.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Medicamentos.aspx" />
     <Content Include="plugins\AdminLTE\app.js" />
     <Content Include="plugins\AdminLTE\app.min.js" />
     <Content Include="plugins\AdminLTE\demo.js" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Medicamentos.aspx.designer.cs">
+      <DependentUpon>Medicamentos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrarIncidente.aspx.cs">

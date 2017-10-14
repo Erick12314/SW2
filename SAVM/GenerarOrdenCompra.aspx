@@ -37,16 +37,18 @@
 						Código:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtcodmedicamentoOC" disabled value="ccccc">
+							<input type="text" class="form-control" id="txtcodmedicamentoOC" disabled>
 							</div>
 							<div class="col-md-6">
-								<input type="button" class="btn btn-primary" value="Buscar Medicamento">
+								<button type="button" class="btn btn-primary" id="btnBuscarMedicamentoOC"
+									data-toggle="modal" data-target="#modalMedicamentosOC" >Buscar Medicamento
+									</button>
 							</div>
 						</div>
 						Nombre:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtnombreOC" disabled value="PENICILINA">
+							<input type="text" class="form-control" id="txtnombreOC" disabled>
 							</div>
 							<div class="col-md-6">
 								<input type="button" class="btn btn-primary" value="Registrar Medicamento">
@@ -54,7 +56,7 @@
 						</div>
 						Precio Unit.:
 						<div style="width:100px">
-						<input type="number" class="form-control" id="txtprecioOC">
+						<input type="number" class="form-control" id="txtprecioOC" disabled>
 						</div>
 						Cantidad:
 						<div class="row">
@@ -117,4 +119,50 @@
 				</div><br><br>
 			</div>
        </div>
+
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modalMedicamentosOC" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Buscar</h4>
+					</div>
+            
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<p class="statusMsg"></p>
+                			<input type="text" placeholder="Ingrese criterio de búsqueda" class="form-control">
+							<br>
+							<table class="table table-bordered">
+								<thead>
+                    				<tr>
+                        				<td>Cod. Med</td>
+										<td>Medicamento</td>
+										<td>Precio</td>
+										<td>Stock</td>
+										<td>Fec. Venc</td>
+										<td>Tipo</td>
+										<td>Proveedor</td>
+										<td>Opción</td>
+									</tr>
+								</thead>
+								<tbody id="tablaMedicamentosOC">
+
+								</tbody>
+							</table>
+					</div>
+            
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 </asp:Content>

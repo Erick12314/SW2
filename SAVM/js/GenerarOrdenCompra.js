@@ -176,7 +176,7 @@ function RegistrarDetalleAJAXOC(precio, cantidad, subtotal, codmedicamento, codo
 }
 
 function ValidarCamposOC() {
-	if ($("#txtrucOC").val() == "" || Number($("#txtrucOC").val()) < 1 || $("#txtrucOC").val() == "") {
+	if ($("#txtrucOC").val() == "" || Number($("#txtrucOC").val()) < 1 || $("#txtrazonsocialOC").val() == "") {
 		alert("Busque el proveedor para la Orden de Compra");
 		return false;
 	}
@@ -203,3 +203,46 @@ function LimpiarOC() {
 	$("#txtmontototalOC").val("");
 	$("#tableDetalleBodyOC").empty();
 }
+
+$("#btnBuscarMedicamentoOC").click(function (e) {
+	e.preventDefault();
+	ListarMedicamentosVentaOC();
+});
+
+function ListarMedicamentosVentaOC() {
+	$.ajax({
+		type: "POST",
+		url: "Medicamentos.aspx/ListarMedicamento",
+		data: {},
+		contentType: "application/json",
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+		},
+		success: function (respuesta) {
+			var data = respuesta.d;
+			$("#tablaMedicamentosOC").empty();
+			var btnAgregar = "<button id='btnAgregarMedicamentoOC' type='button' class='btn btn-success btn-md' style='color:white;'>Agregar</button>";
+			for (var i = 0; i < data.length; i++) {
+				$("#tablaMedicamentosOC").append("<tr>" +
+					"<td>" + data[i].CodMedicamento + "</td>" +
+					"<td>" + data[i].Descripcion + "</td>" +
+					"<td>" + data[i].PrecioVenta + "</td>" +
+					"<td>" + data[i].Stock + "</td>" +
+					"<td>" + data[i].FechaVencimiento + "</td>" +
+					"<td>" + data[i].TipoMedicamento.Descripcion + "</td>" +
+					"<td>" + data[i].Proveedor.RazonSocial + "</td>" +
+					"<td>" + btnAgregar + "</td>" +
+					"</tr > ");
+			}
+		}
+	});
+}
+
+$("#tablaMedicamentosOC").on('click', '#btnAgregarMedicamentoOC', function (e) {
+	e.preventDefault();
+	var fila = $(this).closest('tr');
+	$("#txtcodmedicamentoOC").val(fila.find('td:eq(0)').text());
+	$("#txtnombreOC").val(fila.find('td:eq(1)').text());
+	$("#txtprecioOC").val(fila.find('td:eq(2)').text());
+	$('#modalMedicamentosOC').modal('toggle');
+});
