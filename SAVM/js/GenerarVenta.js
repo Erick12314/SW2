@@ -19,7 +19,7 @@ $(document).ready(function () {
 	$("#txtfecha").val(hoy);
 });
 
-function ObtenerNroVenta() {s
+function ObtenerNroVenta() {
 	$.ajax({
 		type: "POST",
 		url: "GenerarVenta.aspx/GenerarNroVenta",
