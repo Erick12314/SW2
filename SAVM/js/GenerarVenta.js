@@ -19,104 +19,19 @@ $(document).ready(function () {
 	$("#txtfecha").val(hoy);
 });
 
-
-function RegistrarVentaAJAX() {
-
-	var resultado = false;
-
-	var obj = JSON.stringify({
-		_Codventa: $("#txtnumventa").val(),
-		_FecVenta: $("#txtfecha").val(),
-		_Igv: $("#txtigv").val(),
-		_Total: $('#txtmontototal').val()
-	});
-
+function ObtenerNroVenta() {s
 	$.ajax({
 		type: "POST",
-		url: "GenerarVenta.aspx/RegistrarVenta",
-		data: obj,
-		dataType: "json",
-		contentType: "application/json",
-		error: function (xhr, ajaxOptions, thrownError) {
-			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-			resultado =  false;
-		},
-		success: function (respuesta) {
-			//alert("Venta Registrada");
-			console.log(respuesta);
-			resultado =  true;
-		}
-	});
-	return resultado;
-}
-
-function RegistrarDetalleAJAX(precio, cantidad, subtotal, codmedicamento, codventa) {
-	var obj = JSON.stringify({
-		_precio: precio,
-		_cantidad: cantidad,
-		_subtotal: subtotal,
-		_codmedicamento: codmedicamento,
-		_codventa: codventa
-	});
-	$.ajax({
-		type: "POST",
-		url: "GenerarVenta.aspx/RegistrarDetalleVenta",
-		data: obj,
-		dataType: "json",
+		url: "GenerarVenta.aspx/GenerarNroVenta",
+		data: {},
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
 		},
 		success: function (respuesta) {
+			$("#txtnumventa").val(respuesta.d);
 		}
-	});
-}
-
-function RegistrarDetalle() {
-	$("#tabladetalleventa tr").each(function () {
-		var fila = $(this).closest('tr');
-		var precio = Number(fila.find('td:eq(2)').text());
-		var cantidad = Number(fila.find('td:eq(3)').text());
-		var subtotal = Number(fila.find('td:eq(4)').text());
-		var codmedicamento = fila.find('td:eq(0)').text();
-		var codventa = $("#txtnumventa").val();
-		RegistrarDetalleAJAX(precio, cantidad, subtotal, codmedicamento, codventa);
-	});
-}
-
-$("#btnGrabar").click(function (e) {
-	e.preventDefault();
-	var flag = ValidarCampos();
-	var resultado = false;
-	if (flag) {
-		//resultado = RegistrarVentaAJAX();
-		RegistrarVentaAJAX();
-
-		alert("La venta se grabó exitosamente");
-
-		//if (resultado) {
-		//	alert("La venta se grabó exitosamente");
-		//} else {
-		//	alert("No se pudo grabar la venta");
-		//	return false;
-		//}
-		RegistrarDetalle();
-		Limpiar();
-		ObtenerNroVenta();
-	}
-});
-
-function ValidarCampos() {
-	if ($("#txtnumdoc").val() == "" || Number($("#txtnumdoc").val()) < 1 || $("#txtrs").val() == "") {
-		alert("Ingrese los datos del cliente");
-		return false;
-	}
-	var filas = Number($('#tabladetalleventa tr').length);
-	if (filas <= 0){
-		alert("Agrege al menos un medicamento a la grilla");
-		return false;
-	}
-	return true;
+	});  
 }
 
 $('body').on('click', '#btnAgregar', function (e) {
@@ -182,6 +97,96 @@ function calcularIGVMonto(monto) {
 	$("#txtigv").val(igv)
 }
 
+$("#btnGrabar").click(function (e) {
+	e.preventDefault();
+	var flag = ValidarCampos();
+	var resultado = false;
+	if (flag) {
+		RegistrarVentaAJAX();
+		alert("La venta se grabó exitosamente");
+		RegistrarDetalle();
+		Limpiar();
+		ObtenerNroVenta();
+	}
+});
+
+function RegistrarVentaAJAX() {
+
+	var resultado = false;
+
+	var obj = JSON.stringify({
+		_Codventa: $("#txtnumventa").val(),
+		_FecVenta: $("#txtfecha").val(),
+		_Igv: $("#txtigv").val(),
+		_Total: $('#txtmontototal').val()
+	});
+
+	$.ajax({
+		type: "POST",
+		url: "GenerarVenta.aspx/RegistrarVenta",
+		data: obj,
+		dataType: "json",
+		contentType: "application/json",
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+			resultado =  false;
+		},
+		success: function (respuesta) {
+			//alert("Venta Registrada");
+			console.log(respuesta);
+			resultado =  true;
+		}
+	});
+	return resultado;
+}
+
+function RegistrarDetalle() {
+	$("#tabladetalleventa tr").each(function () {
+		var fila = $(this).closest('tr');
+		var precio = Number(fila.find('td:eq(2)').text());
+		var cantidad = Number(fila.find('td:eq(3)').text());
+		var subtotal = Number(fila.find('td:eq(4)').text());
+		var codmedicamento = fila.find('td:eq(0)').text();
+		var codventa = $("#txtnumventa").val();
+		RegistrarDetalleAJAX(precio, cantidad, subtotal, codmedicamento, codventa);
+	});
+}
+
+function RegistrarDetalleAJAX(precio, cantidad, subtotal, codmedicamento, codventa) {
+	var obj = JSON.stringify({
+		_precio: precio,
+		_cantidad: cantidad,
+		_subtotal: subtotal,
+		_codmedicamento: codmedicamento,
+		_codventa: codventa
+	});
+	$.ajax({
+		type: "POST",
+		url: "GenerarVenta.aspx/RegistrarDetalleVenta",
+		data: obj,
+		dataType: "json",
+		contentType: "application/json",
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+		},
+		success: function (respuesta) {
+		}
+	});
+}
+
+function ValidarCampos() {
+	if ($("#txtnumdoc").val() == "" || Number($("#txtnumdoc").val()) < 1 || $("#txtrs").val() == "") {
+		alert("Ingrese los datos del cliente");
+		return false;
+	}
+	var filas = Number($('#tabladetalleventa tr').length);
+	if (filas <= 0){
+		alert("Agrege al menos un medicamento a la grilla");
+		return false;
+	}
+	return true;
+}
+
 function Limpiar() {
 	$("#txtnumdoc").val("");
 	$("#txtrs").val("");
@@ -194,20 +199,4 @@ function Limpiar() {
 	$("#txtigv").val("");
 	$("#txtmontototal").val("");
 	$("#tabladetalleventa").empty();
-}
-
-function ObtenerNroVenta() {
-	var nroventa;
-	$.ajax({
-		type: "POST",
-		url: "GenerarVenta.aspx/GenerarNroVenta",
-		data: {},
-		contentType: "application/json",
-		error: function (xhr, ajaxOptions, thrownError) {
-			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-		},
-		success: function (respuesta) {
-			$("#txtnumventa").val(respuesta.d);
-		}
-	});  
 }

@@ -98,12 +98,13 @@ namespace Capa_Datos
 			SqlDataReader dr = null;
 			try
 			{
-				cmd = new SqlCommand("SELECT CODVENTA FROM VENTA", cn);
+				cmd = new SqlCommand("select top 1 CODVENTA FROM VENTA ORDER BY CODVENTA DESC", cn);
 				cn.Open();
 				dr = cmd.ExecuteReader();
 				if (dr.Read())
 				{
 					valor = Convert.ToInt32(Convert.ToString(dr[0]).Replace("V", "")) + 1;
+					var srt = Int32.Parse(string.Format("ASDASD"));
 					resultado += valor;
 				}
 				else

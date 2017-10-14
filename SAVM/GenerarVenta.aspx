@@ -63,7 +63,7 @@
 				<div class="row">
 					<div class="col-md-8 form-inline">
 						<label>N° de la Venta:</label>&nbsp;&nbsp;&nbsp;
-						<input type="text" class="form-control" style="width: 100px" id="txtnumventa" disabled>
+						<input type="text" class="form-control" style="width: 100px" id="txtnumventa">
 					</div>
 						
 					<div  class="form-inline col-md-4">
