@@ -53,7 +53,7 @@
 							<div class="col-md-6 col-md-offset-3">
 								<input type="button" class="btn btn-primary" value="Agregar Medicamento" id="btnAgregar">
 							</div>
-						</div>
+						</div>.
 						<br>
 					</fieldset>
 			</div><br>	

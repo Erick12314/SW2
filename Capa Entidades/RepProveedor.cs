@@ -14,6 +14,6 @@ namespace Capa_Entidades
 		public string Materno { get; set; }
 		public string Telefono { get; set; }
 		public string Correo { get; set; }
-		public long RucProveedor { get; set; }
+		public Proveedor Proveedor { get; set; }
 	}
 }

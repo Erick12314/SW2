@@ -216,5 +216,6 @@
 	<script src="plugins/AdminLTE/app.min.js"></script>
 	<!-- Scripts del sistema -->
 	<script src="js/GenerarVenta.js"></script>
+	<script src="js/GenerarOrdenCompra.js"></script>
 </body>
 </html>

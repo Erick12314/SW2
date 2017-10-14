@@ -13,7 +13,7 @@
 						RUC:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtruc">
+							<input type="text" class="form-control" id="txtrucOC" disabled value="20330025213">
 							</div>
 							<div class="col-md-6">
 								<input type="button" class="btn btn-primary" value="Buscar Proveedor">
@@ -22,14 +22,14 @@
 						Razón Social:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtrazonsocial">
+							<input type="text" class="form-control" id="txtrazonsocialOC" disabled>
 							</div>
 							<div class="col-md-6">
 								<input type="button" class="btn btn-primary" value="Registrar Proveedor">
 							</div>
 						</div><br>
 						Contacto:
-						<input type="text" class="form-control" style="width:200px" id="txtcontacto"><br><br>
+						<input type="text" class="form-control" style="width:200px" id="txtcontactoOC" disabled><br><br>
 					</fieldset>
 
 					<fieldset class="col-md-6">
@@ -37,7 +37,7 @@
 						Código:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtcodmedicamento">
+							<input type="text" class="form-control" id="txtcodmedicamentoOC" disabled value="ccccc">
 							</div>
 							<div class="col-md-6">
 								<input type="button" class="btn btn-primary" value="Buscar Medicamento">
@@ -46,7 +46,7 @@
 						Nombre:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtnombre">
+							<input type="text" class="form-control" id="txtnombreOC" disabled value="PENICILINA">
 							</div>
 							<div class="col-md-6">
 								<input type="button" class="btn btn-primary" value="Registrar Medicamento">
@@ -54,15 +54,15 @@
 						</div>
 						Precio Unit.:
 						<div style="width:100px">
-						<input type="number" class="form-control" id="txtprecio">
+						<input type="number" class="form-control" id="txtprecioOC">
 						</div>
 						Cantidad:
 						<div class="row">
 							<div class="col-md-3">
-							<input type="number" class="form-control" id="txtcantidad">
+							<input type="number" class="form-control" id="txtcantidadOC">
 							</div>
 							<div class="col-md-6 col-md-offset-3">
-								<input type="button" class="btn btn-primary" value="Agregar Medicamento" id="btnAgregar">
+								<input type="button" class="btn btn-primary" value="Agregar Medicamento" id="btnAgregarOC">
 							</div>
 						</div>
 						<br>
@@ -73,13 +73,13 @@
 				<legend>Datos de la O/C</legend>
 				<div class="row">
 					<div class="col-md-8 form-inline">
-						<label for="txtnumoc">N° de O/C:</label>&nbsp;&nbsp;&nbsp;
-						<input type="text" class="form-control" style="width: 100px" id="txtnumoc">
+						<label for="txtnumocOC">N° de O/C:</label>&nbsp;&nbsp;&nbsp;
+						<input type="text" class="form-control" style="width: 100px" id="txtnumocOC" disabled>
 					</div>
 						
 					<div  class="form-inline col-md-4">
-						<label for="txtfecha">Fecha:</label>&nbsp;&nbsp;&nbsp;
-						<input type="date" class="form-control" id="txtfecha">
+						<label for="txtfechaOC">Fecha:</label>&nbsp;&nbsp;&nbsp;
+						<input type="text" class="form-control" id="txtfechaOC" disabled>
 					</div>
 				</div><br>
 	
@@ -93,18 +93,18 @@
 							<td>Eliminar</td>	
 						</tr>
 					</thead>
-					<tbody id="tableDetalleBody">
+					<tbody id="tableDetalleBodyOC">
 
 					</tbody>
 				</table>
 				<br><br><br><br>
 				<div class="col-md-offset-9 col-md-2">
 						Monto:
-						<input type="number" class="form-control" id="txtmonto">
+						<input type="number" class="form-control" id="txtmontoOC" disabled>
 						I.G.V(18%):
-						<input type="number" class="form-control" id="txtigv">
+						<input type="number" class="form-control" id="txtigvOC" disabled>
 						Monto Total:
-						<input type="number" class="form-control" id="txtmontototal"><br>
+						<input type="number" class="form-control" id="txtmontototalOC" disabled><br>
 				</div>
 			</fieldset>
 			</div><br>
@@ -113,7 +113,7 @@
 					<input type="button" class="btn btn-primary" value="Volver">
 				</div>
 				<div class="col-md-6">
-					<input type="button" class="btn btn-success" value="Grabar" id="btnGrabar">
+					<input type="button" class="btn btn-success" value="Grabar" id="btnGrabarOC">
 				</div><br><br>
 			</div>
        </div>
