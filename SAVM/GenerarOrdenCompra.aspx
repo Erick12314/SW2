@@ -124,7 +124,7 @@
 		<!-- Modal -->
 		<div class="modal fade" id="modalMedicamentosOC" role="dialog">
 			<div class="modal-dialog">
-				<div class="modal-content">
+				<div class="modal-content modal-lg" style="overflow:auto;height:600px">
 					<!-- Modal Header -->
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">
