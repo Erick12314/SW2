@@ -42,22 +42,21 @@ namespace Capa_Datos
 				{
 					Medicamento ObjMedicamento = new Medicamento()
 					{
-						IdMedicamento = Convert.ToInt32(dr[0]),
-						CodMedicamento = Convert.ToString(dr[1]),
-						Descripcion = Convert.ToString(dr[2]),
-						PrecioCompra = Convert.ToDecimal(dr[3]),
-						PrecioVenta = Convert.ToDecimal(dr[4]),
-						Stock = Convert.ToInt32(dr[5]),
-						StockMinimo = Convert.ToInt32(dr[6]),
-						FechaVencimiento = Convert.ToString(dr[7]),
+						CodMedicamento = Convert.ToString(dr[0]),
+						Descripcion = Convert.ToString(dr[1]),
+						PrecioCompra = Convert.ToDecimal(dr[2]),
+						PrecioVenta = Convert.ToDecimal(dr[3]),
+						Stock = Convert.ToInt32(dr[4]),
+						StockMinimo = Convert.ToInt32(dr[5]),
+						FechaVencimiento = Convert.ToString(dr[6]),
 						TipoMedicamento = new TipoMedicamento()
 						{
-							Descripcion = Convert.ToString(dr[8]),
+							Descripcion = Convert.ToString(dr[7]),
 						},
 
 						Proveedor = new Proveedor()
 						{
-							RazonSocial = dr[9].ToString()
+							RazonSocial = dr[8].ToString()
 						}
 
 					};

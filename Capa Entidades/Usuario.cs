@@ -8,7 +8,6 @@ namespace Capa_Entidades
 {
     public class Usuario
     {
-        public int IdUsuario { get; set; }
         public string Username { get; set; }
         public string Pass { get; set; }
 		public string Nombre { get; set; }
@@ -16,6 +15,6 @@ namespace Capa_Entidades
 		public string Materno { get; set; }
 		public long Dni { get; set; }
 		public bool Estado { get; set; }
-		public int IdRol { get; set; }
+		public RolUsuario RolUsuario { get; set; }
     }
 }

@@ -8,7 +8,6 @@ namespace Capa_Entidades
 {
     public class Medicamento
     {
-        public int IdMedicamento { get; set; }
 		public string CodMedicamento { get; set; }
 		public string Descripcion { get; set; }
         public decimal PrecioCompra { get; set; }

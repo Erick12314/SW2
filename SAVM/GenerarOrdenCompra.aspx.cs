@@ -14,7 +14,10 @@ namespace SAVM
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (Session["usuario"] == null)
+			{
+				Response.Redirect("Login.aspx");
+			}
 		}
 
 		[WebMethod]
@@ -38,7 +41,10 @@ namespace SAVM
 				FecOrdCompra = _FecOC,
 				Igv = _Igv,
 				Total = _Total,
-				RucPro = _Ruc
+				Proveedor = new Proveedor()
+				{
+					RUC = _Ruc
+				}
 			};
 			resultado = OrdenCompraLN.GetInstance().RegistrarOC(obj);
 
@@ -55,8 +61,14 @@ namespace SAVM
 				Precio = _precio,
 				Cantidad = _cantidad,
 				Subtotal = _subtotal,
-				CodMedicamento = _codmedicamento,
-				CodOrdCompra = _codoc
+				Medicamento = new Medicamento()
+				{
+					CodMedicamento = _codmedicamento
+				},
+				OrdenCompra = new OrdenCompra()
+				{
+					CodOrdCompra = _codoc
+				}
 			};
 			resultado = OrdenCompraLN.GetInstance().RegistrarDetalleOC(obj);
 

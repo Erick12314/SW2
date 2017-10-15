@@ -14,19 +14,28 @@ namespace SAVM
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (Session["usuario"] == null)
+			{
+				Response.Redirect("Login.aspx");
+			}
 		}
 
 		[WebMethod]
 		public static string RegistrarVenta(string _Codventa, string _FecVenta, decimal _Igv, decimal _Total)
 		{
+			string usuario = HttpContext.Current.Session["usuario"].ToString();
 			bool resultado = false;
+
 			Venta venta = new Venta()
 			{
 				CodVenta = _Codventa,
 				FecVenta = _FecVenta,
 				Igv = _Igv,
-				Total = _Total
+				Total = _Total,
+				Usuario = new Usuario()
+				{
+					Username = usuario
+				}
 			};
 
 			resultado = VentaLN.GetInstance().RegistrarVenta(venta);
@@ -42,8 +51,14 @@ namespace SAVM
 				Precio = _precio,
 				Cantidad = _cantidad,
 				Subtotal = _subtotal,
-				CodMedicamento = _codmedicamento,
-				CodVenta = _codventa
+				Medicamento = new Medicamento()
+				{
+					CodMedicamento = _codmedicamento
+				},
+				Venta = new Venta()
+				{
+					CodVenta = _codventa
+				}
 			};
 
 			resultado = VentaLN.GetInstance().RegistrarDetalleVenta(detalle);

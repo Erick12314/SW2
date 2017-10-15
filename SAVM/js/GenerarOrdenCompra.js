@@ -15,7 +15,6 @@ $(document).ready(function () {
 
 	hoy = dia + '/' + mes + '/' + year;
 
-	ObtenerNroOC();
 	$("#txtfechaOC").val(hoy);
 });
 
@@ -24,6 +23,7 @@ function ObtenerNroOC() {
 		type: "POST",
 		url: "GenerarOrdenCompra.aspx/GenerarNroOC",
 		data: {},
+		async: false,
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
@@ -97,19 +97,6 @@ function calcularIGVMontoOC(monto) {
 	$("#txtigvOC").val(igv)
 }
 
-$("#btnGrabarOC").click(function (e) {
-	e.preventDefault();
-	var flag = ValidarCamposOC();
-	var resultado = false;
-	if (flag) {
-		RegistrarOCAJAX();
-		alert("La Orden de Compra se grabó exitosamente");
-		RegistrarDetalleOC();
-		LimpiarOC();
-		ObtenerNroOC();
-	}
-});
-
 function RegistrarOCAJAX() {
 
 	var resultado = false;
@@ -127,6 +114,7 @@ function RegistrarOCAJAX() {
 		url: "GenerarOrdenCompra.aspx/RegistrarOC",
 		data: obj,
 		dataType: "json",
+		async: false,
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
@@ -166,6 +154,7 @@ function RegistrarDetalleAJAXOC(precio, cantidad, subtotal, codmedicamento, codo
 		url: "GenerarOrdenCompra.aspx/RegistrarDetalleOC",
 		data: obj,
 		dataType: "json",
+		async: false,
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
@@ -245,4 +234,21 @@ $("#tablaMedicamentosOC").on('click', '#btnAgregarMedicamentoOC', function (e) {
 	$("#txtnombreOC").val(fila.find('td:eq(1)').text());
 	$("#txtprecioOC").val(fila.find('td:eq(2)').text());
 	$('#modalMedicamentosOC').modal('toggle');
+});
+
+
+$("#btnGrabarOC").click(function (e) {
+	e.preventDefault();
+
+	var flag = ValidarCamposOC();
+	var resultado = false;
+	if (flag) {
+		ObtenerNroOC();
+		RegistrarOCAJAX();
+		alert("La Orden de Compra se grabó exitosamente");
+		RegistrarDetalleOC();
+		window.print();
+
+		LimpiarOC();
+	}
 });

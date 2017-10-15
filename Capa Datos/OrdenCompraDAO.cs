@@ -69,14 +69,14 @@ namespace Capa_Datos
 			try
 			{
 				cn = Conexion.GetInstance().ConexionDB();
-
+				
 				cmd = new SqlCommand("SP_REGORDENCOMPRA", cn);
 				cmd.CommandType = CommandType.StoredProcedure;
 				cmd.Parameters.AddWithValue("@CODORDCOMPRA", obj.CodOrdCompra);
 				cmd.Parameters.AddWithValue("@FECORDCOMPRA", obj.FecOrdCompra);
 				cmd.Parameters.AddWithValue("@IGV", obj.Igv);
 				cmd.Parameters.AddWithValue("@TOTAL", obj.Total);
-				cmd.Parameters.AddWithValue("@RUCPRO", obj.RucPro);
+				cmd.Parameters.AddWithValue("@RUCPRO", obj.Proveedor.RUC);
 				cn.Open();
 				resultado = cmd.ExecuteNonQuery() >= 1 ? true : false;
 
@@ -108,8 +108,8 @@ namespace Capa_Datos
 				cmd.Parameters.AddWithValue("@PREUNITARIO", obj.Precio);
 				cmd.Parameters.AddWithValue("@CANTIDAD", obj.Cantidad);
 				cmd.Parameters.AddWithValue("@SUBTOTAL", obj.Subtotal);
-				cmd.Parameters.AddWithValue("@CODMEDICAMENTO", obj.CodMedicamento);
-				cmd.Parameters.AddWithValue("@CODORDCOMPRA", obj.CodOrdCompra);
+				cmd.Parameters.AddWithValue("@CODMEDICAMENTO", obj.Medicamento.CodMedicamento);
+				cmd.Parameters.AddWithValue("@CODORDCOMPRA", obj.OrdenCompra.CodOrdCompra);
 				cn.Open();
 				resultado = cmd.ExecuteNonQuery() >= 1 ? true : false;
 

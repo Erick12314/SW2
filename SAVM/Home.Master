@@ -16,6 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+  <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<form id="form1" runat="server">
@@ -215,7 +216,6 @@
 		<!-- AdminLTE App -->
 	<script src="plugins/AdminLTE/app.min.js"></script>
 	<!-- Scripts del sistema -->
-	<script src="js/GenerarVenta.js"></script>
-	<script src="js/GenerarOrdenCompra.js"></script>
+	<asp:ContentPlaceHolder id="footer" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

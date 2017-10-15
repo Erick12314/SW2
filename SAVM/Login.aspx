@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Login</title>
     <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
+	<link href="img/mundo4.jpg" type="icon" />
     <link href="css/AdminLTE.css" rel="stylesheet" />
 </head>
 <body class="bg-black">
@@ -21,7 +21,7 @@
                             <asp:TextBox ID="Username" runat="server" class="form-control" placeholder="Ingrese usuario"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:TextBox ID="Password" runat="server" class="form-control" placeholder="Ingrese contraseña"></asp:TextBox>
+                            <asp:TextBox ID="Password" runat="server" class="form-control" type="password" placeholder="Ingrese contraseña"></asp:TextBox>
                         </div>
                     </div>
                     <div class="footer">

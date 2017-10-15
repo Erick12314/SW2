@@ -13,6 +13,6 @@ namespace Capa_Entidades
 		public string FecVenta { get; set; }
 		public decimal Igv { get; set; }
 		public decimal Total { get; set; }
-		public int IdUsuario { get; set; }
+		public Usuario Usuario { get; set; }
 	}
 }

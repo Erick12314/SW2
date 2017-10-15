@@ -2,7 +2,7 @@
 $(document).ready(function () {
 	var hoy = new Date();
 	var dia = hoy.getDate();
-	var mes = hoy.getMonth() + 1; 
+	var mes = hoy.getMonth() + 1;
 	var year = hoy.getFullYear();
 
 	if (dia < 10) {
@@ -15,7 +15,6 @@ $(document).ready(function () {
 
 	hoy = dia + '/' + mes + '/' + year;
 
-	ObtenerNroVenta();
 	$("#txtfecha").val(hoy);
 });
 
@@ -24,14 +23,15 @@ function ObtenerNroVenta() {
 		type: "POST",
 		url: "GenerarVenta.aspx/GenerarNroVenta",
 		data: {},
+		async: false,
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
 		},
-		success: function (respuesta) {
-			$("#txtnumventa").val(respuesta.d);
+		success: function (response) {
+			$('#txtnumventa').val(response.d);
 		}
-	});  
+	});
 }
 
 $('body').on('click', '#btnAgregar', function (e) {
@@ -53,11 +53,11 @@ $('body').on('click', '#btnAgregar', function (e) {
 	var botonEliminar = "<button id='btnEliminar' type='button' class='btn btn-danger btn-md' style='color:white;'>Eliminar</button>";
 	$('#tabladetalleventa').append("<tr>" +
 		"<td>" + codmedicamento + "</td>" +
-		"<td>" + medicamento +"</td>" +
-		"<td>" + precio +"</td>" +
-		"<td>" + cantidad +"</td>" +
-		"<td>" + subtotal +"</td>" +
-		"<td>" + botonEliminar +"</td>" +
+		"<td>" + medicamento + "</td>" +
+		"<td>" + precio + "</td>" +
+		"<td>" + cantidad + "</td>" +
+		"<td>" + subtotal + "</td>" +
+		"<td>" + botonEliminar + "</td>" +
 		"</tr > ");
 	ActualizarMontosSumar(subtotal);
 });
@@ -78,7 +78,7 @@ $('#tabladetalleventa').on('click', '#btnEliminar', function () {
 		fila.remove();
 		var subtotal = Number(fila.find('td:eq(4)').text());
 		ActualizarMontosRestar(subtotal);
-	} 
+	}
 });
 
 function ActualizarMontosRestar(subtotal) {
@@ -97,18 +97,7 @@ function calcularIGVMonto(monto) {
 	$("#txtigv").val(igv)
 }
 
-$("#btnGrabar").click(function (e) {
-	e.preventDefault();
-	var flag = ValidarCampos();
-	var resultado = false;
-	if (flag) {
-		RegistrarVentaAJAX();
-		alert("La venta se grabó exitosamente");
-		RegistrarDetalle();
-		Limpiar();
-		ObtenerNroVenta();
-	}
-});
+
 
 function RegistrarVentaAJAX() {
 
@@ -126,15 +115,16 @@ function RegistrarVentaAJAX() {
 		url: "GenerarVenta.aspx/RegistrarVenta",
 		data: obj,
 		dataType: "json",
+		async: false,
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-			resultado =  false;
+			resultado = false;
 		},
 		success: function (respuesta) {
 			//alert("Venta Registrada");
-			console.log(respuesta);
-			resultado =  true;
+			console.log(respuesta.d);
+			resultado = true;
 		}
 	});
 	return resultado;
@@ -165,6 +155,7 @@ function RegistrarDetalleAJAX(precio, cantidad, subtotal, codmedicamento, codven
 		url: "GenerarVenta.aspx/RegistrarDetalleVenta",
 		data: obj,
 		dataType: "json",
+		async: false,
 		contentType: "application/json",
 		error: function (xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
@@ -180,7 +171,7 @@ function ValidarCampos() {
 		return false;
 	}
 	var filas = Number($('#tabladetalleventa tr').length);
-	if (filas <= 0){
+	if (filas <= 0) {
 		alert("Agrege al menos un medicamento a la grilla");
 		return false;
 	}
@@ -242,4 +233,21 @@ $("#tablaMedicamentosVenta").on('click', '#btnAgregarMedicamento', function (e) 
 	$("#txtnombre").val(fila.find('td:eq(1)').text());
 	$("#txtprecio").val(fila.find('td:eq(2)').text());
 	$('#modalMedicamentos').modal('toggle');
+});
+
+$("#btnGrabar").click(function (e) {
+	e.preventDefault();
+
+	var flag = ValidarCampos();
+	var resultado = false;
+	if (flag) {
+		ObtenerNroVenta();
+		RegistrarVentaAJAX();
+		alert("La venta se grabó exitosamente");
+		RegistrarDetalle();
+		window.print();
+
+		Limpiar();
+
+	}
 });

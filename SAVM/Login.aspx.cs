@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,7 +14,7 @@ namespace SAVM
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+		
 		}
 
 		protected void BtnIngreso_Click(object sender, EventArgs e)
@@ -25,7 +26,12 @@ namespace SAVM
 
 			if (ObjEmpleado != null)
 			{
+				Session["usuario"] = ObjEmpleado.Username;
 				Response.Redirect("Index.aspx");
+			}
+			else
+			{
+				Response.Write("<script>alert('Verifique su usuario y contraseña')</script>");
 			}
 		}
 	}

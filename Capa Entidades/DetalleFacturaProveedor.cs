@@ -12,7 +12,7 @@ namespace Capa_Entidades
 		public decimal PreUnitario { get; set; }
 		public int Cantidad { get; set; }
 		public decimal Importe { get; set; }
-		public string NroFactura { get; set; }
-		public string CodMedicamento { get; set; }
+		public FacturaProveedor FacturaProveedor { get; set; }
+		public Medicamento Medicamento { get; set; }
 	}
 }

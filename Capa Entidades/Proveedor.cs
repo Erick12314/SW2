@@ -8,7 +8,6 @@ namespace Capa_Entidades
 {
     public class Proveedor
     {
-        public int IdProveedor { get; set; }
 		public long RUC { get; set; }
 		public string RazonSocial { get; set; }
         public string Direccion { get; set; }

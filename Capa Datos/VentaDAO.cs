@@ -41,10 +41,9 @@ namespace Capa_Datos
 				cmd.Parameters.AddWithValue("@FECVENTA", venta.FecVenta);
 				cmd.Parameters.AddWithValue("@IGV", venta.Igv);
 				cmd.Parameters.AddWithValue("@TOTAL", venta.Total);
-				cmd.Parameters.AddWithValue("@IDUSUARIO", 1);
+				cmd.Parameters.AddWithValue("@IDUSUARIO", venta.Usuario.Username);
 				cn.Open();
 				resultado = cmd.ExecuteNonQuery() >= 1 ? true : false;
-				
 			}
 			catch (SqlException ex)
 			{
@@ -72,8 +71,8 @@ namespace Capa_Datos
 				cmd.Parameters.AddWithValue("@PREUNITARIO", obj.Precio);
 				cmd.Parameters.AddWithValue("@CANTIDAD", obj.Cantidad);
 				cmd.Parameters.AddWithValue("@SUBTOTAL", obj.Subtotal);
-				cmd.Parameters.AddWithValue("@CODMEDICAMENTO", obj.CodMedicamento);
-				cmd.Parameters.AddWithValue("@CODVENTA", obj.CodVenta);
+				cmd.Parameters.AddWithValue("@CODMEDICAMENTO", obj.Medicamento.CodMedicamento);
+				cmd.Parameters.AddWithValue("@CODVENTA", obj.Venta.CodVenta);
 				cn.Open();
 				resultado = cmd.ExecuteNonQuery() >= 1 ? true : false;
 

@@ -8,10 +8,10 @@ namespace Capa_Entidades
 {
     public class IndicenteProveedor
     {
-        public int IdIncPro { get; set; }
+        public string CodIncPro { get; set; }
         public string FecIncidente { get; set; }
 		public string Descripcion { get; set; }
 		public long RucPro { get; set; }
-		public int IdTipoIncidencia { get; set; }
+		public TipoIncidencia TipoIncidencia { get; set; }
     }
 }

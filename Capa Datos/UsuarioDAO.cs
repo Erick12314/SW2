@@ -45,9 +45,8 @@ namespace Capa_Datos
 				if (dr.Read())
 				{
 					objUsuario = new Usuario();
-					objUsuario.IdUsuario = Convert.ToInt32(dr[0].ToString());
-					objUsuario.Username = dr[1].ToString();
-					objUsuario.Pass = dr[2].ToString();
+					objUsuario.Username = dr[0].ToString();
+					objUsuario.Pass = dr[1].ToString();
 				}
 			}
 			catch (SqlException ex)

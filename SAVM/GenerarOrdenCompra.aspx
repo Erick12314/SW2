@@ -1,4 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="GenerarOrdenCompra.aspx.cs" Inherits="SAVM.GenerarOrdenCompra" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="GenerarOrdenCompra.aspx.cs" ClientIDMode="Static"
+	Inherits="SAVM.GenerarOrdenCompra" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+</asp:Content>
 <asp:Content ID="Content_GOC" ContentPlaceHolderID="MainContent" runat="server">
 	<header class="titulo">
         <div class="container-fluid">
@@ -165,4 +169,7 @@
 				</div>
 			</div>
 		</div>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="footer" runat="server">
+    <script src="js/GenerarOrdenCompra.js"></script>
 </asp:Content>
