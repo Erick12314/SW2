@@ -47,7 +47,7 @@ namespace Capa_Datos
 				{
 					if (Convert.ToString(dr[0]).ToString().Length >= 1)
 					{
-						substring = Convert.ToString(dr[0]).Substring(5);
+						substring = Convert.ToString(dr[0]).Substring(7);
 					}
 					else
 					{

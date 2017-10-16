@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="RegistrarIncidente.aspx.cs" Inherits="SAVM.RegistrarIncidente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="RegistrarIncidente.aspx.cs" ClientIDMode="Static"
+	Inherits="SAVM.RegistrarIncidente" %>
 <asp:Content ID="Content_RI" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="container-fluid">
 		<br>
@@ -12,7 +13,7 @@
 							        <label>Código:</label>
                                     </div>
                                     <div class="col-md-6">
-							        <input type="text" class="form-control">
+							        <input type="text" class="form-control" id="txtIdProv">
                                     </div>
                                 </div><br/>
                                 <div class="row">

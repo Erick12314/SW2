@@ -82,6 +82,7 @@
     <Content Include="Index.aspx" />
     <Content Include="js\GenerarOrdenCompra.js" />
     <Content Include="js\GenerarVenta.js" />
+    <Content Include="plugins\printThis.js" />
     <Content Include="Login.aspx" />
     <Content Include="Medicamentos.aspx" />
     <Content Include="plugins\AdminLTE\app.js" />

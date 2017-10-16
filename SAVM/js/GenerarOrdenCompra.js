@@ -292,8 +292,39 @@ $("#btnGrabarOC").click(function (e) {
 		RegistrarOCAJAX();
 		alert("La Orden de Compra se grabó exitosamente");
 		RegistrarDetalleOC();
-		window.print();
-
+		PrintModal();
 		LimpiarOC();
 	}
 });
+
+function PrintModal() {
+	var codOC = $("#txtnumocOC").val();
+	var razonSocial = $("#txtrazonsocialOC").val();
+	var RUC = $("#txtrucOC").val();
+	var monto = $("#txtmontoOC").val();
+	var igv = $("#txtigvOC").val();
+	var montototal = $("#txtmontototalOC").val();
+	$("#txtRS").val(razonSocial);
+	$("#txtRuc").val(RUC);
+	$("#txtPrtMonto").val(monto);
+	$("#txtPrtIgv").val(igv);
+	$("#txtPrtMontoTotal").val(montototal);
+	$("#nroOC").text(codOC);
+	copiarTablaDetalle('tableDetalleBodyOC', 'prtTableDetalleOC', 0, 1, 2, 3, 4)
+	$("#printOC").printThis();
+	$("#prtTableDetalleOC").empty();
+};
+
+
+//Copia la tabla detalle a la tabla del modal
+function copiarTablaDetalle(sourceTableId, targetTableId) {
+	var colNos = [].slice.call(arguments, 2),
+		$target = $("#" + targetTableId);
+	$("#" + sourceTableId + " tr").each(function () {
+		var $tds = $(this).children(),
+			$row = $("<tr></tr>");
+		for (var i = 0; i < colNos.length; i++)
+			$row.append($tds.eq(colNos[i]).clone());
+		$row.appendTo($target);
+	});
+};

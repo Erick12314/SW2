@@ -104,15 +104,15 @@
 			</div><br>
 			<div class="row">
 				<div class="col-md-1">
-					<input type="button" class="btn btn-primary" value="Volver">
+					<input type="button" class="btn btn-primary" value="Volver" onClick="location.href='/Index.aspx'">
 				</div>
 				<div class="col-md-6">
-					<input type="button" class="btn btn-success" value="Grabar" id="btnGrabar">
+					<input type="button" class="btn btn-success" value="Grabar e Imprimir" id="btnGrabar">
 				</div><br><br>
 			</div>
        </div>
 		
-		<!-- Modal -->
+		<!-- Modal Medicamentos -->
 		<div class="modal fade" id="modalMedicamentos" role="dialog" >
 			<div class="modal-dialog">
 				<div class="modal-content modal-lg" style="overflow:auto;height:600px">
@@ -157,7 +157,73 @@
 			</div>
 		</div>
 		
+	<!--Start Modal: Imprimir -->
+    <div class="modal fade" id="modalPrintVenta" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content modal-lg">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="modalNnroVenta"></h4>
+                </div>
+                <div class="modal-body" id="printVenta">
+
+                    <h2>VENTA NUMERO:<label id="nroVenta"></label></h2>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="form-group col-md-6 col-lg-6">
+                            <label for="txtNomCliente">NOMBRE</label>
+                            <input type="text" id="txtNomCliente" class="form-control" name="nombrecliente" value="" />
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6">
+                            <label for="txtIdCliente">DNI</label>
+                            <input type="number" id="txtIdCliente" class="form-control" name="idcliente" value="" />
+                        </div>
+                    </div>
+                    <div>
+                        <h4>DETALLE DE VENTA </h4>
+                        <br />
+                        <table id="prtTableDetalleVenta" class="table table-bordered table-hover">
+                        </table>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <label for="txtPrtMonto">MONTO S/.</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <input class="form-control" type="text" id="txtPrtMonto" name="prtmonto" value="" />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <label for="txtPrtIgv">IGV</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <input class="form-control" type="text" id="txtPrtIgv" name="prtigv" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <label for="txtPrtMontoTotal">MONTO TOTAL S/.</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <input class="form-control" type="text" id="txtPrtMontoTotal" name="prtmontototal" value="" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Modal: Imprimir -->
+
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="footer" runat="server">
     <script src="js/GenerarVenta.js"></script>
+	<script src="plugins/printThis.js"></script>
 </asp:Content>

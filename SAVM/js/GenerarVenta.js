@@ -25,12 +25,12 @@ function ObtenerNroVenta() {
 		data: {},
 		async: false,
 		contentType: "application/json",
-		error: function (xhr, ajaxOptions, thrownError) {
-			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-		},
 		success: function (response) {
 			$('#txtnumventa').val(response.d);
-		}
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+		}		
 	});
 }
 
@@ -249,9 +249,38 @@ $("#btnGrabar").click(function (e) {
 		RegistrarVentaAJAX();
 		alert("La venta se grabó exitosamente");
 		RegistrarDetalle();
-		window.print();
-
+		PrintModal();	
 		Limpiar();
-
 	}
 });
+
+function PrintModal() {
+	var idventa = $("#txtnumventa").val();
+	var cliente = $("#txtrs").val();
+	var idCliente = $("#txtnumdoc").val();
+	var monto = $("#txtmonto").val();
+	var igv = $("#txtigv").val();
+	var montototal = $("#txtmontototal").val();
+	$("#txtNomCliente").val(cliente);
+	$("#txtIdCliente").val(idCliente);
+	$("#txtPrtMonto").val(monto);
+	$("#txtPrtIgv").val(igv);
+	$("#txtPrtMontoTotal").val(montototal);
+	$("#nroVenta").text(idventa);
+	copiarTablaDetalle('tabladetalleventa', 'prtTableDetalleVenta', 0, 1, 2, 3, 4)
+	$("#printVenta").printThis();
+};
+
+
+//Copia la tabla detalle a la tabla del modal
+function copiarTablaDetalle(sourceTableId, targetTableId) {
+	var colNos = [].slice.call(arguments, 2),
+		$target = $("#" + targetTableId);
+	$("#" + sourceTableId + " tr").each(function () {
+		var $tds = $(this).children(),
+			$row = $("<tr></tr>");
+		for (var i = 0; i < colNos.length; i++)
+			$row.append($tds.eq(colNos[i]).clone());
+		$row.appendTo($target);
+	});
+};
