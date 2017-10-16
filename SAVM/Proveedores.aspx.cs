@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace SAVM
 {
-	public partial class Medicamentos : System.Web.UI.Page
+	public partial class Proveedores : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -19,11 +19,12 @@ namespace SAVM
 				Response.Redirect("Login.aspx");
 			}
 		}
+
 		[WebMethod]
-		public static List<Medicamento> ListarMedicamento()
+		public static List<RepProveedor> ListarProveedores()
 		{
-			List<Medicamento> Lista = null;
-			Lista = MedicamentoLN.GetInstance().ListarMedicamento();
+			List<RepProveedor> Lista = null;
+			Lista = ProveedorLN.GetInstance().ListarMedicamento();
 			return Lista;
 		}
 	}

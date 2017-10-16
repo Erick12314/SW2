@@ -60,6 +60,10 @@ $('body').on('click', '#btnAgregar', function (e) {
 		"<td>" + botonEliminar + "</td>" +
 		"</tr > ");
 	ActualizarMontosSumar(subtotal);
+	$("#txtcodmedicamento").val("");
+	$("#txtnombre").val("");
+	$("#txtprecio").val("");
+	$("#txtcantidad").val("");
 });
 
 function ActualizarMontosSumar(subtotal) {

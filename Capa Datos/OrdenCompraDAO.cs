@@ -27,8 +27,11 @@ namespace Capa_Datos
 
 		public string GenerarNroOC()
 		{
-			string resultado = "C";
+			string codigo_oc = string.Empty;
 			int valor = 0;
+			int year = DateTime.Today.Year;
+			string substring = string.Empty;
+
 			SqlConnection cn = null;
 			SqlCommand cmd = null;
 			SqlDataReader dr = null;
@@ -39,14 +42,40 @@ namespace Capa_Datos
 				cmd = new SqlCommand("select top 1 CODORDCOMPRA FROM ORDENDECOMPRA ORDER BY CODORDCOMPRA DESC", cn);
 				cn.Open();
 				dr = cmd.ExecuteReader();
+
 				if (dr.Read())
 				{
-					valor = Convert.ToInt32(Convert.ToString(dr[0]).Replace("C", "")) + 1;
-					resultado = string.Format(resultado + "{0}", valor);
+					if (Convert.ToString(dr[0]).ToString().Length >= 1)
+					{
+						substring = Convert.ToString(dr[0]).Substring(5);
+					}
+					else
+					{
+						substring = "0";
+					}
+
+					valor = Convert.ToInt32(substring) + 1;
+
+					if (valor < 10)
+					{
+						codigo_oc = string.Format("OC" + "{0}" + "0000" + "{1}", year.ToString(), valor.ToString());
+					}
+					if (valor >= 10)
+					{
+						codigo_oc = string.Format("OC" + "{0}" + "000" + "{1}", year.ToString(), valor.ToString());
+					}
+					if (valor >= 100)
+					{
+						codigo_oc = string.Format("OC" + "{0}" + "00" + "{1}", year.ToString(), valor.ToString());
+					}
+					if (valor >= 1000)
+					{
+						codigo_oc = string.Format("OC" + "{0}" + "0" + "{1}", year.ToString(), valor.ToString());
+					}
 				}
 				else
 				{
-					resultado = "C1";
+					codigo_oc = string.Format("OC" + "{0}" + "00001", year.ToString());
 				}
 			}
 			catch (SqlException ex)
@@ -57,7 +86,7 @@ namespace Capa_Datos
 			{
 				cn.Close();
 			}
-			return resultado;
+			return codigo_oc;
 		}
 
 		public bool RegistrarOC(OrdenCompra obj)

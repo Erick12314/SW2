@@ -60,6 +60,10 @@ $('body').on('click', '#btnAgregarOC', function (e) {
 		"<td>" + botonEliminar + "</td>" +
 		"</tr > ");
 	ActualizarMontosSumarOC(subtotal);
+	$("#txtcodmedicamentoOC").val("");
+	$("#txtnombreOC").val("");
+	$("#txtprecioOC").val("");
+	$("#txtcantidadOC").val("");
 });
 
 function ActualizarMontosSumarOC(subtotal) {
@@ -236,6 +240,47 @@ $("#tablaMedicamentosOC").on('click', '#btnAgregarMedicamentoOC', function (e) {
 	$('#modalMedicamentosOC').modal('toggle');
 });
 
+$("#btnBuscarProveedor").click(function (e) {
+	e.preventDefault();
+	ListarProveedoresOC();
+});
+
+function ListarProveedoresOC() {
+	$.ajax({
+		type: "POST",
+		url: "Proveedores.aspx/ListarProveedores",
+		data: {},
+		contentType: "application/json",
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+		},
+		success: function (respuesta) {
+			var data = respuesta.d;
+			$("#tablaProveedoresModal").empty();
+			var btnAgregar = "<button id='btnAgregarProveedorLista' type='button' class='btn btn-success btn-md' style='color:white;'>Agregar</button>";
+			for (var i = 0; i < data.length; i++) {
+				$("#tablaProveedoresModal").append("<tr>" +
+					"<td>" + data[i].Proveedor.RUC + "</td>" +
+					"<td>" + data[i].Proveedor.RazonSocial + "</td>" +
+					"<td>" + data[i].Telefono + "</td>" +
+					"<td>" + data[i].Correo + "</td>" +
+					"<td>" + data[i].Proveedor.Direccion + "</td>" +
+					"<td>" + data[i].Paterno + " " + data[i].Materno + ", " + data[i].Nombre + "</td>" +
+					"<td>" + btnAgregar + "</td>" +
+					"</tr > ");
+			}
+		}
+	});
+}
+
+$("#tablaProveedoresModal").on('click', '#btnAgregarProveedorLista', function (e) {
+	e.preventDefault();
+	var fila = $(this).closest('tr');
+	$("#txtrucOC").val(fila.find('td:eq(0)').text());
+	$("#txtrazonsocialOC").val(fila.find('td:eq(1)').text());
+	$("#txtcontactoOC").val(fila.find('td:eq(5)').text());
+	$('#modalProveedores').modal('toggle');
+});
 
 $("#btnGrabarOC").click(function (e) {
 	e.preventDefault();

@@ -19,7 +19,6 @@
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<form id="form1" runat="server">
 		<div class="wrapper">
 
 			<header class="main-header">
@@ -180,12 +179,13 @@
 					</h1>
 					<div class="container body-content">
 
+						<form id="form1" runat="server">
+                        
+							<asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            <!--- CONTENIDO ---->
+							</asp:ContentPlaceHolder>
 
-
-						<asp:ContentPlaceHolder ID="MainContent" runat="server">
-						</asp:ContentPlaceHolder>
-
-
+						</form>
 
 					</div>
 				</section>
@@ -205,7 +205,6 @@
        immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
 		</div>
-	</form>
 
 	<!-- jQuery 2.2.3 -->
 	<script src="plugins/jquery/jquery-3.2.1.min.js"></script>

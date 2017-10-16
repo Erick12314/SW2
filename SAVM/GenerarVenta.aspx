@@ -122,13 +122,13 @@
 							<span aria-hidden="true">×</span>
 							<span class="sr-only">Close</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Buscar</h4>
+						<h4 class="modal-title">Medicamentos</h4>
 					</div>
             
 					<!-- Modal Body -->
 					<div class="modal-body">
 						<p class="statusMsg"></p>
-                			<input type="text" placeholder="Ingrese criterio de búsqueda" class="form-control">
+                			<input type="text" placeholder="Ingrese criterio de búsqueda" class="form-control" id="txtBuscarMedicamento">
 							<br>
 							<table class="table table-bordered">
 								<thead>

@@ -90,8 +90,11 @@ namespace Capa_Datos
 		}
 		public string GenerarNroVenta()
 		{
-			string resultado = "V";
+			string codigo_venta = string.Empty;
 			int valor = 0;
+			int year = DateTime.Today.Year;
+			string substring = string.Empty;
+
 			SqlConnection cn = null;
 			SqlCommand cmd = null;
 			SqlDataReader dr = null;
@@ -102,14 +105,41 @@ namespace Capa_Datos
 				cmd = new SqlCommand("select top 1 CODVENTA FROM VENTA ORDER BY CODVENTA DESC", cn);
 				cn.Open();
 				dr = cmd.ExecuteReader();
+
 				if (dr.Read())
 				{
-					valor = Convert.ToInt32(Convert.ToString(dr[0]).Replace("V", "")) + 1;
-					resultado = string.Format(resultado + "{0}", valor);
+					if (Convert.ToString(dr[0]).ToString().Length >= 1)
+					{
+						substring = Convert.ToString(dr[0]).Substring(5);
+					}
+					else
+					{
+						substring = "0";
+					}
+
+					substring = Convert.ToString(dr[0]).Substring(5);
+					valor = Convert.ToInt32(substring) + 1;
+
+					if (valor < 10)
+					{
+						codigo_venta = string.Format("V" + "{0}" + "0000" + "{1}", year.ToString(), valor.ToString());
+					}
+					if (valor >= 10)
+					{
+						codigo_venta = string.Format("V" + "{0}" + "000" + "{1}", year.ToString(), valor.ToString());
+					}
+					if (valor >= 100)
+					{
+						codigo_venta = string.Format("V" + "{0}" + "00" + "{1}", year.ToString(), valor.ToString());
+					}
+					if (valor >= 1000)
+					{
+						codigo_venta = string.Format("V" + "{0}" + "0" + "{1}", year.ToString(), valor.ToString());
+					}
 				}
 				else
 				{
-					resultado = "V1";
+					codigo_venta = string.Format("V" + "{0}" + "00001", year.ToString());
 				}
 			}
 			catch (SqlException ex)
@@ -120,7 +150,7 @@ namespace Capa_Datos
 			{
 				cn.Close();
 			}
-			return resultado;
+			return codigo_venta;
 
 		}
 	}

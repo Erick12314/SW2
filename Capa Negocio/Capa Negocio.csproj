@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="MedicamentoLN.cs" />
     <Compile Include="OrdenCompraLN.cs" />
+    <Compile Include="ProveedorLN.cs" />
     <Compile Include="UsuarioLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VentaLN.cs" />

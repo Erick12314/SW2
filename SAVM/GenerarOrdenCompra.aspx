@@ -17,10 +17,12 @@
 						RUC:
 						<div class="row">
 							<div class="col-md-6">
-							<input type="text" class="form-control" id="txtrucOC" disabled value="20330025213">
+							<input type="text" class="form-control" id="txtrucOC" disabled>
 							</div>
 							<div class="col-md-6">
-								<input type="button" class="btn btn-primary" value="Buscar Proveedor">
+								<button type="button" class="btn btn-primary" id="btnBuscarProveedor"
+									data-toggle="modal" data-target="#modalProveedores" >Buscar Proveedor
+									</button>
 							</div>
 						</div><br>
 						Razón Social:
@@ -33,7 +35,7 @@
 							</div>
 						</div><br>
 						Contacto:
-						<input type="text" class="form-control" style="width:200px" id="txtcontactoOC" disabled><br><br>
+						<input type="text" class="form-control" id="txtcontactoOC" disabled><br><br>
 					</fieldset>
 
 					<fieldset class="col-md-6">
@@ -125,7 +127,7 @@
        </div>
 
 		
-		<!-- Modal -->
+		<!-- Modal Medicamentos-->
 		<div class="modal fade" id="modalMedicamentosOC" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content modal-lg" style="overflow:auto;height:600px">
@@ -135,18 +137,18 @@
 							<span aria-hidden="true">×</span>
 							<span class="sr-only">Close</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Buscar</h4>
+						<h4 class="modal-title">Medicamentos</h4>
 					</div>
             
 					<!-- Modal Body -->
 					<div class="modal-body">
 						<p class="statusMsg"></p>
-                			<input type="text" placeholder="Ingrese criterio de búsqueda" class="form-control">
+                			<input type="text" placeholder="Ingrese criterio de búsqueda" class="form-control" id="txtBuscarMedicamentoOC">
 							<br>
 							<table class="table table-bordered">
 								<thead>
                     				<tr>
-                        				<td>Cod. Med</td>
+										<td>Cod. Med</td>
 										<td>Medicamento</td>
 										<td>Precio</td>
 										<td>Stock</td>
@@ -157,6 +159,49 @@
 									</tr>
 								</thead>
 								<tbody id="tablaMedicamentosOC">
+
+								</tbody>
+							</table>
+					</div>
+            
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Proveedores-->
+		<div class="modal fade" id="modalProveedores" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content modal-lg" style="overflow:auto;height:600px">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">Proveedores</h4>
+					</div>
+            
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<p class="statusMsg"></p>
+                			<input type="text" placeholder="Ingrese criterio de búsqueda" class="form-control" id="txtBuscarProveedor">
+							<br>
+							<table class="table table-bordered">
+								<thead>
+                    				<tr>
+                        				<td>RUC</td>
+										<td>Razón Social</td>
+										<td>Telefono</td>
+										<td>Correo</td>
+										<td>Dirección</td>
+										<td>Contacto</td>
+									</tr>
+								</thead>
+								<tbody id="tablaProveedoresModal">
 
 								</tbody>
 							</table>
